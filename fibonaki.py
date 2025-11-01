@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 for i in range(int(input())):
     memo = []
     k,n = (map(int, input().split()))
@@ -8,10 +11,10 @@ for i in range(int(input())):
         continue
     newN = n-k
     count = 0
-    for i in range(newN):
+    for i in range(newN-1):
         memo.append(s)
         s += memo[-1]
         s -= count if count < k else memo[count-k]
         count += 1
-    print(memo[(n-k)-1]%1000007)
+    print(s%1000007)
 
