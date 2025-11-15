@@ -1,10 +1,17 @@
 import math
 
+#matrix = [
+ #   [0,3,0,5],
+  #  [0,0,2,0],
+   # [0,0,0,3],
+   # [0,0,0,0]
+#]
+
 matrix = [
-    [0,1,0,5],
+    [0,0,8,6],
     [0,0,2,0],
-    [0,0,0,3],
-    [0,0,0,0]
+    [0,0,0,8],
+    [0,2,0,0]
 ]
 
 def dijkstra(M, inicio):
@@ -30,11 +37,15 @@ def dijkstra(M, inicio):
         visitado[u] = True
 
         # relaxa arestas
+        print(f"DistA == {dist}")
         for v, peso in enumerate(M[u]):
+            print(f"{v,peso}, dist[u] == {dist[u]}, dist[v] == {dist[v]}, dist == {dist[u] + peso}, u == {u}")
             if peso != 0 and not visitado[v]:
                 if dist[u] + peso < dist[v]:
                     dist[v] = dist[u] + peso
                     pai[v] = u
+        print(f"DistD == {dist}")
+        print()
 
     return dist, pai
 
